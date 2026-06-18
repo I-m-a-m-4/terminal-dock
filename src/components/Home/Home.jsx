@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 
 const Home = () => {
+  useEffect(() => {
+    // Short delay to ensure React has fully rendered before UnicornStudio searches the DOM
+    const timer = setTimeout(() => {
+      if (window.UnicornStudio && !window.UnicornStudio.isInitialized) {
+        window.UnicornStudio.init().then(() => {
+          window.UnicornStudio.isInitialized = true;
+        });
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div
@@ -247,8 +260,22 @@ const Home = () => {
           </section>
 
           {/* Features Section */}
-          <section className="py-24 md:py-32" id="features">
-            <div className="container mx-auto px-6">
+          <section className="py-24 md:py-32 relative overflow-hidden" id="features">
+            {/* UnicornStudio Aura Background Localized to this section */}
+            <div
+              className="absolute inset-0 z-0 pointer-events-none"
+              style={{
+                filter: 'saturate(100%)',
+                opacity: 0.5,
+                mixBlendMode: 'screen',
+                maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+              }}
+            >
+              <div data-us-project="tPmIIl0vKqHO9yqmtge2" style={{ width: '100%', height: '100%' }}></div>
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
               <div className="max-w-3xl mb-16">
                 <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Built for how dispatchers actually work</h2>
                 <p className="text-lg text-zinc-400">Every feature is designed to keep you in flow — less context switching, more shipping.</p>
@@ -323,8 +350,23 @@ const Home = () => {
           </section>
 
           {/* Showcase / Case Studies Section */}
-          <section id="work" className="py-24 border-t border-zinc-900">
-            <div className="container mx-auto px-6">
+          <section id="work" className="py-24 border-t border-zinc-900 relative overflow-hidden">
+            {/* UnicornStudio Aura Background Localized to this section */}
+            <div
+              className="absolute inset-0 z-0 pointer-events-none"
+              style={{
+                filter: 'saturate(100%)',
+                opacity: 0.5,
+                mixBlendMode: 'screen',
+                maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+              }}
+            >
+              {/* Using the project ID you provided */}
+              <div data-us-project="tPmIIl0vKqHO9yqmtge2" style={{ width: '100%', height: '100%' }}></div>
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div className="max-w-2xl">
                   <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Real efficiency gains</h2>
