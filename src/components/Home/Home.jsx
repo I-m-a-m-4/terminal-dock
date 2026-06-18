@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { motion } from 'framer-motion';
 
 const Home = () => {
-  useEffect(() => {
-    // UnicornStudio is loaded via index.html script tag — just initialise it
-    if (window.UnicornStudio && !window.UnicornStudio.isInitialized) {
-      window.UnicornStudio.init();
-      window.UnicornStudio.isInitialized = true;
-    }
-  }, []);
-
-  // Render the background via a portal so it's NOT inside a stacking context
+  // Render the background video via a portal so it's NOT inside a stacking context
   const background = ReactDOM.createPortal(
     <div
       style={{
@@ -21,17 +14,22 @@ const Home = () => {
         height: '100vh',
         zIndex: 0,
         pointerEvents: 'none',
-        saturate: '50%',
+        filter: 'saturate(50%)',
         opacity: 0.35,
         mixBlendMode: 'luminosity',
         maskImage: 'linear-gradient(to bottom, transparent, black 0%, black 70%, transparent)',
         WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 0%, black 70%, transparent)',
       }}
     >
-      <div
-        data-us-project="FixNvEwvWwbu3QX9qC3F"
-        style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
-      />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      >
+        <source src="/termian dock vid1.mp4" type="video/mp4" />
+      </video>
     </div>,
     document.body
   );
@@ -85,11 +83,11 @@ const Home = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-zinc-100 max-w-4xl leading-tight mb-6">
-                Your terminal,<br />elevated and organized.
+                Your logistics,<br />elevated and organized.
               </h1>
 
               <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mb-10 font-light">
-                TerminalDock gives developers a beautifully organized, persistent workspace for their terminals — tabs, sessions, and commands all in one dock.
+                TerminalDock gives dispatchers a beautifully organized, persistent workspace for their fleets — routes, vehicles, and shipments all in one dock.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -110,11 +108,11 @@ const Home = () => {
 
               {/* Trust Logos */}
               <div className="mt-24 pt-10 border-t border-zinc-900 w-full max-w-5xl">
-                <p className="text-xs text-zinc-500 mb-6 uppercase tracking-widest text-center">Loved by developers at</p>
+                <p className="text-xs text-zinc-500 mb-6 uppercase tracking-widest text-center">Trusted by top logistics teams</p>
                 <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
-                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:code-bold"></iconify-icon> DEVCO</span>
-                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:server-bold"></iconify-icon> STACKR</span>
-                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:cloud-bold"></iconify-icon> NEBULA</span>
+                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:box-bold"></iconify-icon> TRANSCO</span>
+                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:bus-bold"></iconify-icon> FREIGHTR</span>
+                  <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:map-bold"></iconify-icon> LOGISX</span>
                   <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1"><iconify-icon icon="solar:layers-bold"></iconify-icon> APEX</span>
                   <span className="text-xl font-medium tracking-tighter text-zinc-400 flex items-center gap-1 hidden md:flex"><iconify-icon icon="solar:shield-bold"></iconify-icon> NEXUS</span>
                 </div>
@@ -135,7 +133,7 @@ const Home = () => {
                   Watch the trailer
                 </h2>
                 <p className="text-zinc-400 max-w-xl mx-auto">
-                  Get a first look at how TerminalDock transforms your workflow. One dock, infinite possibilities.
+                  Get a first look at how TerminalDock transforms your dispatch workflow. One dock, infinite possibilities.
                 </p>
               </div>
 
@@ -159,10 +157,12 @@ const Home = () => {
 
                   <video
                     className="w-full aspect-video object-cover"
+                    autoPlay
+                    muted
+                    loop
                     controls
                     playsInline
-                    preload="metadata"
-                    poster=""
+                    preload="auto"
                   >
                     <source src="/termian dock vid1.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -177,21 +177,78 @@ const Home = () => {
             </div>
           </section>
 
+          {/* Features Steps Scroll Section */}
+          <section className="relative py-24 md:py-32 bg-zinc-950/80 border-t border-zinc-900">
+            <div className="container mx-auto px-6">
+              <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-start relative">
+                
+                {/* Left side: Sticky Video */}
+                <div className="lg:w-1/2 lg:sticky lg:top-40 relative rounded-2xl border border-zinc-800 overflow-hidden shadow-2xl bg-zinc-950/50 backdrop-blur-sm order-1 z-10">
+                  {/* Top bar decoration */}
+                  <div className="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-800 bg-zinc-950/80">
+                    <span className="w-3 h-3 rounded-full bg-zinc-700"></span>
+                    <span className="w-3 h-3 rounded-full bg-zinc-700"></span>
+                    <span className="w-3 h-3 rounded-full bg-zinc-700"></span>
+                    <span className="ml-4 text-xs text-zinc-500 font-mono">terminal_dock_vid2.mp4</span>
+                  </div>
+                  <video
+                    className="w-full aspect-[4/3] object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                  >
+                    <source src="/termian dock vid2.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                {/* Right side: Scrolling text items */}
+                <div className="lg:w-1/2 flex flex-col order-2 pb-32 pt-8 lg:pt-0">
+                  {[
+                    { num: '01', text: 'Autonomous, agentic AI-driven workflows to streamline your entire transport lifecycle.' },
+                    { num: '02', text: 'A single pane of glass into every shipment, giving you total visibility from start to finish.' },
+                    { num: '03', text: 'Managed seamlessly by a unified platform that connects drivers, dispatchers, and clients.' },
+                    { num: '04', text: 'Highly configurable logic adapting to your specific operational needs.' },
+                    { num: '05', text: 'Unlock unprecedented value and save hours of manual data entry every single day.' },
+                    { num: '06', text: 'Digitally transform your terminal and keep freight moving continuously.' }
+                  ].map((item, index) => (
+                    <motion.div 
+                      key={item.num}
+                      className="max-w-xl py-16 flex flex-col justify-center"
+                      initial={{ opacity: 0.1, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    >
+                      <div className="text-emerald-400 font-mono text-sm mb-4">{item.num}</div>
+                      <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-zinc-100 mb-4 leading-tight">
+                        {item.text}
+                      </h3>
+                    </motion.div>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+          </section>
+
           {/* Metrics/Stats Section */}
           <section className="py-20 border-y border-zinc-900 bg-zinc-950/50">
             <div className="container mx-auto px-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-zinc-900">
                 <div className="flex flex-col items-center text-center px-4">
                   <span className="text-4xl font-medium tracking-tight text-zinc-100 mb-2">12k+</span>
-                  <span className="text-sm text-zinc-500">Active Developers</span>
+                  <span className="text-sm text-zinc-500">Active Dispatchers</span>
                 </div>
                 <div className="flex flex-col items-center text-center px-4">
                   <span className="text-4xl font-medium tracking-tight text-zinc-100 mb-2">5M+</span>
-                  <span className="text-sm text-zinc-500">Commands Docked</span>
+                  <span className="text-sm text-zinc-500">Shipments Docked</span>
                 </div>
                 <div className="flex flex-col items-center text-center px-4">
                   <span className="text-4xl font-medium tracking-tight text-zinc-100 mb-2">99.9%</span>
-                  <span className="text-sm text-zinc-500">Uptime</span>
+                  <span className="text-sm text-zinc-500">On-time Rate</span>
                 </div>
                 <div className="flex flex-col items-center text-center px-4">
                   <span className="text-4xl font-medium tracking-tight text-zinc-100 mb-2">4.9★</span>
@@ -205,7 +262,7 @@ const Home = () => {
           <section className="py-24 md:py-32" id="features">
             <div className="container mx-auto px-6">
               <div className="max-w-3xl mb-16">
-                <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Built for how developers actually work</h2>
+                <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Built for how dispatchers actually work</h2>
                 <p className="text-lg text-zinc-400">Every feature is designed to keep you in flow — less context switching, more shipping.</p>
               </div>
 
@@ -215,14 +272,14 @@ const Home = () => {
                   <div className="h-12 w-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-6 group-hover:text-zinc-50 group-hover:border-zinc-700 transition-colors">
                     <iconify-icon icon="solar:terminal-bold-duotone" style={{ strokeWidth: '1.5', fontSize: '24px' }}></iconify-icon>
                   </div>
-                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Persistent Session Dock</h3>
+                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Persistent Fleet Dock</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                    Never lose your terminal sessions again. Dock them, name them, and resume exactly where you left off — even after a reboot.
+                    Never lose your vehicle sessions again. Dock them, name them, and track exactly where they are — even across borders.
                   </p>
                   <ul className="space-y-2 text-sm text-zinc-500">
-                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Auto-restore sessions</li>
-                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Named workspaces</li>
-                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Multi-project support</li>
+                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Auto-restore routes</li>
+                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Named fleets</li>
+                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Multi-region support</li>
                   </ul>
                 </div>
 
@@ -231,14 +288,14 @@ const Home = () => {
                   <div className="h-12 w-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-6 group-hover:text-zinc-50 group-hover:border-zinc-700 transition-colors">
                     <iconify-icon icon="solar:command-bold-duotone" style={{ strokeWidth: '1.5', fontSize: '24px' }}></iconify-icon>
                   </div>
-                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Smart Command Palette</h3>
+                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Smart Routing Palette</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                    Search, pin and re-run your most-used commands with a single keystroke. Your personal command library, always within reach.
+                    Search, pin and re-run your most-used routes with a single keystroke. Your personal dispatch library, always within reach.
                   </p>
                   <ul className="space-y-2 text-sm text-zinc-500">
-                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Command history search</li>
+                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Route history search</li>
                     <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Pinnable favourites</li>
-                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Fuzzy match</li>
+                    <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Smart matching</li>
                   </ul>
                 </div>
 
@@ -249,7 +306,7 @@ const Home = () => {
                   </div>
                   <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Team Sync & Sharing</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                    Share workspace configs and command libraries with your team. Onboard new devs in minutes, not days.
+                    Share workspace configs and dispatch libraries with your team. Onboard new dispatchers in minutes, not days.
                   </p>
                   <ul className="space-y-2 text-sm text-zinc-500">
                     <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Config export/import</li>
@@ -263,9 +320,9 @@ const Home = () => {
                   <div className="h-12 w-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-6 group-hover:text-zinc-50 group-hover:border-zinc-700 transition-colors">
                     <iconify-icon icon="solar:settings-bold-duotone" style={{ strokeWidth: '1.5', fontSize: '24px' }}></iconify-icon>
                   </div>
-                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Extensible & Scriptable</h3>
+                  <h3 className="text-xl font-medium tracking-tight text-zinc-100 mb-3">Extensible API</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                    Hook into your existing workflow with plugins, webhooks and a full scripting API. Automate the boring stuff.
+                    Hook into your existing logistics workflow with plugins, webhooks and a full API. Automate the boring stuff.
                   </p>
                   <ul className="space-y-2 text-sm text-zinc-500">
                     <li className="flex items-center gap-2"><iconify-icon icon="solar:check-circle-linear" className="text-zinc-700"></iconify-icon> Plugin ecosystem</li>
@@ -282,8 +339,8 @@ const Home = () => {
             <div className="container mx-auto px-6">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div className="max-w-2xl">
-                  <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Real productivity gains</h2>
-                  <p className="text-lg text-zinc-400">See what developers are saying about switching to TerminalDock.</p>
+                  <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-zinc-100 mb-4">Real efficiency gains</h2>
+                  <p className="text-lg text-zinc-400">See what logistics teams are saying about switching to TerminalDock.</p>
                 </div>
                 <a href="#" className="text-sm text-zinc-300 hover:text-zinc-100 flex items-center gap-2 transition-colors pb-2">
                   Read all stories
@@ -296,12 +353,12 @@ const Home = () => {
                 <div className="group relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[4/3] flex flex-col justify-between p-8 hover:border-zinc-700 transition-colors">
                   <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex items-center gap-2 text-zinc-500 text-sm">
-                    <iconify-icon icon="solar:code-square-linear"></iconify-icon> Startup Engineering
+                    <iconify-icon icon="solar:box-minimalistic-linear"></iconify-icon> Startup Logistics
                   </div>
                   <div className="relative z-10">
                     <div className="text-4xl font-medium tracking-tight text-emerald-400 mb-2">3× faster</div>
-                    <h3 className="text-lg font-medium text-zinc-100 mb-2">Onboarding New Devs</h3>
-                    <p className="text-sm text-zinc-400">Shared workspace configs cut onboarding from 3 days to under an hour for a 20-person eng team.</p>
+                    <h3 className="text-lg font-medium text-zinc-100 mb-2">Onboarding New Dispatchers</h3>
+                    <p className="text-sm text-zinc-400">Shared workspace configs cut onboarding from 3 days to under an hour for a 20-person dispatch team.</p>
                   </div>
                 </div>
 
@@ -309,12 +366,12 @@ const Home = () => {
                 <div className="group relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[4/3] flex flex-col justify-between p-8 hover:border-zinc-700 transition-colors">
                   <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex items-center gap-2 text-zinc-500 text-sm">
-                    <iconify-icon icon="solar:server-square-linear"></iconify-icon> Freelance Dev
+                    <iconify-icon icon="solar:bus-linear"></iconify-icon> Freight Forwarder
                   </div>
                   <div className="relative z-10">
                     <div className="text-4xl font-medium tracking-tight text-blue-400 mb-2">80%</div>
                     <h3 className="text-lg font-medium text-zinc-100 mb-2">Less Context Switching</h3>
-                    <p className="text-sm text-zinc-400">Managing 6 client projects simultaneously with zero confusion — each with its own persistent dock.</p>
+                    <p className="text-sm text-zinc-400">Managing 6 client accounts simultaneously with zero confusion — each with its own persistent dock.</p>
                   </div>
                 </div>
 
@@ -322,12 +379,12 @@ const Home = () => {
                 <div className="group relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[4/3] flex flex-col justify-between p-8 hover:border-zinc-700 transition-colors">
                   <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex items-center gap-2 text-zinc-500 text-sm">
-                    <iconify-icon icon="solar:settings-linear"></iconify-icon> DevOps Team
+                    <iconify-icon icon="solar:settings-linear"></iconify-icon> Operations Team
                   </div>
                   <div className="relative z-10">
                     <div className="text-4xl font-medium tracking-tight text-purple-400 mb-2">40h</div>
                     <h3 className="text-lg font-medium text-zinc-100 mb-2">Saved Per Month</h3>
-                    <p className="text-sm text-zinc-400">Automated recurring server commands with scripted docks — no more manual SSH juggling.</p>
+                    <p className="text-sm text-zinc-400">Automated recurring route assignments with scripted docks — no more manual dispatch juggling.</p>
                   </div>
                 </div>
               </div>
@@ -342,7 +399,7 @@ const Home = () => {
 
                 <div className="flex-1">
                   <h2 className="text-3xl font-medium tracking-tight text-zinc-100 mb-4">Ready to dock in?</h2>
-                  <p className="text-sm text-zinc-400 mb-8">Join thousands of developers who've upgraded their terminal workflow. Tell us about your setup — we'll help you get started fast.</p>
+                  <p className="text-sm text-zinc-400 mb-8">Join thousands of logistics professionals who've upgraded their dispatch workflow. Tell us about your setup — we'll help you get started fast.</p>
 
                   <div className="space-y-4 text-sm text-zinc-300">
                     <div className="flex items-start gap-3">
@@ -351,11 +408,11 @@ const Home = () => {
                     </div>
                     <div className="flex items-start gap-3">
                       <iconify-icon icon="solar:check-circle-linear" className="text-zinc-500 mt-0.5 text-base"></iconify-icon>
-                      <span>Works with macOS, Linux &amp; Windows WSL</span>
+                      <span>Works with any logistics system</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <iconify-icon icon="solar:check-circle-linear" className="text-zinc-500 mt-0.5 text-base"></iconify-icon>
-                      <span>Integrates with your existing shell &amp; dotfiles</span>
+                      <span>Integrates with your existing workflow</span>
                     </div>
                   </div>
                 </div>
@@ -365,7 +422,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-xs font-medium text-zinc-400 px-1">Name</label>
-                        <input type="text" placeholder="Jane Dev" className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900 transition-colors" />
+                        <input type="text" placeholder="Jane Doe" className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900 transition-colors" />
                       </div>
                       <div className="space-y-1.5">
                         <label className="text-xs font-medium text-zinc-400 px-1">Work Email</label>
@@ -377,10 +434,10 @@ const Home = () => {
                       <label className="text-xs font-medium text-zinc-400 px-1">Your Setup</label>
                       <div className="relative">
                         <select defaultValue="" className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 appearance-none focus:outline-none focus:border-zinc-600 focus:bg-zinc-900 transition-colors cursor-pointer">
-                          <option value="" disabled className="text-zinc-600">Select your primary OS / shell...</option>
-                          <option value="mac-zsh">macOS + zsh</option>
-                          <option value="linux-bash">Linux + bash</option>
-                          <option value="wsl">Windows + WSL</option>
+                          <option value="" disabled className="text-zinc-600">Select your primary fleet size...</option>
+                          <option value="small">1-50 vehicles</option>
+                          <option value="medium">51-200 vehicles</option>
+                          <option value="large">201+ vehicles</option>
                           <option value="other">Other</option>
                         </select>
                         <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-zinc-500">
@@ -391,7 +448,7 @@ const Home = () => {
 
                     <div className="space-y-1.5">
                       <label className="text-xs font-medium text-zinc-400 px-1">Tell us about your workflow</label>
-                      <textarea rows="3" placeholder="How many projects do you juggle? What's your biggest terminal pain point?" className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900 transition-colors resize-none"></textarea>
+                      <textarea rows="3" placeholder="How many routes do you juggle? What's your biggest dispatch pain point?" className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900 transition-colors resize-none"></textarea>
                     </div>
 
                     <button type="submit" className="w-full py-3 mt-2 text-sm font-medium bg-zinc-100 text-zinc-950 rounded-lg hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
@@ -417,7 +474,7 @@ const Home = () => {
                   TerminalDock
                 </a>
                 <p className="text-sm text-zinc-400 max-w-sm mb-6">
-                  A developer productivity tool for organizing terminal sessions, commands, and workflows into one seamless dock.
+                  A logistics productivity tool for organizing fleet sessions, routes, and workflows into one seamless dock.
                 </p>
                 <div className="flex items-center gap-4 text-zinc-500">
                   <a href="#" className="hover:text-zinc-100 transition-colors"><iconify-icon icon="solar:letter-linear" className="text-xl"></iconify-icon></a>
@@ -459,7 +516,7 @@ const Home = () => {
             <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
               <p>© 2024 TerminalDock. All rights reserved.</p>
               <div className="flex items-center gap-4">
-                <span>Built for developers, by developers.</span>
+                <span>Built for logistics, by experts.</span>
                 <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500/50"></span>
                 <span>All systems operational</span>
               </div>
