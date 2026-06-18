@@ -2,6 +2,28 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 
+const TechNotch = () => (
+  <div className="absolute top-0 left-0 w-full h-6 lg:h-8 z-20 pointer-events-none">
+    <svg viewBox="0 0 1440 32" className="w-full h-full" preserveAspectRatio="none">
+      {/* Background fill */}
+      <path d="M0 0 H 500 L 524 32 H 916 L 940 0 H 1440 V -10 H 0 Z" fill="#09090b" />
+      
+      {/* Continuous stroke line */}
+      <path d="M0 0 H 500 L 524 32 H 916 L 940 0 H 1440" fill="none" stroke="#27272a" strokeWidth="1" />
+      
+      {/* Decorative dashed lines on the flat parts */}
+      <line x1="50" y1="0" x2="450" y2="0" stroke="#3f3f46" strokeWidth="2" strokeDasharray="4 16" />
+      <line x1="990" y1="0" x2="1390" y2="0" stroke="#3f3f46" strokeWidth="2" strokeDasharray="4 16" />
+      
+      {/* Small dot accents at the corners */}
+      <circle cx="500" cy="0" r="2" fill="#52525b" />
+      <circle cx="940" cy="0" r="2" fill="#52525b" />
+      <circle cx="524" cy="32" r="2" fill="#52525b" />
+      <circle cx="916" cy="32" r="2" fill="#52525b" />
+    </svg>
+  </div>
+);
+
 const Home = () => {
   useEffect(() => {
     // Short delay to ensure React has fully rendered before UnicornStudio searches the DOM
@@ -210,10 +232,7 @@ const Home = () => {
                   {[
                     { num: '01', text: 'Autonomous, agentic AI-driven workflows to streamline your entire transport lifecycle.' },
                     { num: '02', text: 'A single pane of glass into every shipment, giving you total visibility from start to finish.' },
-                    { num: '03', text: 'Managed seamlessly by a unified platform that connects drivers, dispatchers, and clients.' },
-                    { num: '04', text: 'Highly configurable logic adapting to your specific operational needs.' },
-                    { num: '05', text: 'Unlock unprecedented value and save hours of manual data entry every single day.' },
-                    { num: '06', text: 'Digitally transform your terminal and keep freight moving continuously.' }
+                    { num: '03', text: 'Managed seamlessly by a unified platform that connects drivers, dispatchers, and clients.' }
                   ].map((item, index) => (
                     <motion.div 
                       key={item.num}
@@ -261,6 +280,7 @@ const Home = () => {
 
           {/* Features Section */}
           <section className="py-24 md:py-32 relative overflow-hidden" id="features">
+            <TechNotch />
             {/* UnicornStudio Aura Background Localized to this section */}
             <div
               className="absolute inset-0 z-0 pointer-events-none"
@@ -494,8 +514,9 @@ const Home = () => {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-zinc-900 bg-zinc-950 pt-16 pb-8">
-          <div className="container mx-auto px-6">
+        <footer className="py-16 bg-zinc-950 relative border-t-0 mt-12 text-left">
+          <TechNotch />
+          <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
 
               <div className="md:col-span-2">
