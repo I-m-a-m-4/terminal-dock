@@ -201,8 +201,9 @@ const Home = () => {
           </section>
 
           {/* Features Steps Scroll Section */}
-          <section className="relative py-24 md:py-32 bg-zinc-950/80 border-t border-zinc-900">
-            <div className="container mx-auto px-6">
+          <section className="relative py-24 md:py-32 bg-zinc-950/80 border-t-0 mt-12">
+            <TechNotch />
+            <div className="container mx-auto px-6 relative z-10">
               <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-start relative">
                 
                 {/* Left side: Sticky Video */}
