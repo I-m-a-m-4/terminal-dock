@@ -3,44 +3,11 @@ import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 
 const Home = () => {
-  // Render the background video via a portal so it's NOT inside a stacking context
-  const background = ReactDOM.createPortal(
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100vh',
-        zIndex: 0,
-        pointerEvents: 'none',
-        filter: 'saturate(50%)',
-        opacity: 0.35,
-        mixBlendMode: 'luminosity',
-        maskImage: 'linear-gradient(to bottom, transparent, black 0%, black 70%, transparent)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 0%, black 70%, transparent)',
-      }}
-    >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      >
-        <source src="/termian dock vid1.mp4" type="video/mp4" />
-      </video>
-    </div>,
-    document.body
-  );
-
   return (
     <>
-      {background}
-
       <div
         className="antialiased min-h-screen flex flex-col font-light selection:bg-zinc-800 selection:text-zinc-50"
-        style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#09090b', color: '#fafafa', position: 'relative', zIndex: 1 }}
+        style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#09090b', color: '#fafafa' }}
       >
         {/* Navigation */}
         <header className="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
@@ -75,7 +42,28 @@ const Home = () => {
         <main className="flex-grow">
           {/* Hero Section */}
           <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-            <div className="container mx-auto px-6 text-center flex flex-col items-center">
+            {/* Background Video */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                zIndex: 0,
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent)',
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover opacity-40"
+                style={{ mixBlendMode: 'screen', filter: 'saturate(50%)' }}
+              >
+                <source src="/termian dock vid1.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div className="container relative z-10 mx-auto px-6 text-center flex flex-col items-center">
 
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs text-zinc-400 mb-8 backdrop-blur-sm">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-500"></span>
