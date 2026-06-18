@@ -565,9 +565,11 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-              <p>© 2024 TerminalDock. All rights reserved.</p>
-              <div className="flex items-center gap-4">
+            <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-zinc-500 text-sm">
+                © 2026 TerminalDock Inc. All rights reserved.
+              </div>
+              <div className="flex items-center gap-4 text-zinc-500">
                 <span>Built for logistics, by experts.</span>
                 <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500/50"></span>
                 <span>All systems operational</span>
