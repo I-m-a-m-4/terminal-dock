@@ -304,7 +304,7 @@ const Home = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Feature Card 1 */}
-                <div className="group p-8 rounded-2xl border border-zinc-900 bg-zinc-950 hover:bg-zinc-900/50 transition-all duration-300">
+                <div className="group p-8 rounded-2xl border border-zinc-900 bg-zinc-950 hover:bg-zinc-900/50 transition-all duration-300 cursor-pointer">
                   <div className="h-12 w-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-6 group-hover:text-zinc-50 group-hover:border-zinc-700 transition-colors">
                     <iconify-icon icon="solar:terminal-bold-duotone" style={{ strokeWidth: '1.5', fontSize: '24px' }}></iconify-icon>
                   </div>
@@ -401,7 +401,7 @@ const Home = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Story 1 */}
-                <div className="group relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[4/3] flex flex-col justify-between p-8 hover:border-zinc-700 transition-colors">
+                <div className="group relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[4/3] flex flex-col justify-between p-8 hover:border-zinc-700 transition-colors cursor-pointer">
                   <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 flex items-center gap-2 text-zinc-500 text-sm">
                     <iconify-icon icon="solar:box-minimalistic-linear"></iconify-icon> Startup Logistics
