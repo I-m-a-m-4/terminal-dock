@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 
@@ -24,7 +24,26 @@ const TechNotch = ({ bottom }) => (
   </div>
 );
 
+const HERO_VIDEOS = [
+  "/termian dock vid1.mp4",
+  "/termian dock vid2.mp4",
+  "/termian dock vid3.mp4"
+];
+
 const Home = () => {
+  const [currentHeroVideoIndex, setCurrentHeroVideoIndex] = useState(0);
+  const videoRef = useRef(null);
+
+  const handleVideoEnded = () => {
+    setCurrentHeroVideoIndex((prevIndex) => (prevIndex + 1) % HERO_VIDEOS.length);
+  };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.error("Video play failed", e));
+    }
+  }, [currentHeroVideoIndex]);
+
   useEffect(() => {
     // Short delay to ensure React has fully rendered before UnicornStudio searches the DOM
     const timer = setTimeout(() => {
@@ -87,15 +106,15 @@ const Home = () => {
               }}
             >
               <video
+                ref={videoRef}
                 autoPlay
                 muted
-                loop
                 playsInline
+                onEnded={handleVideoEnded}
+                src={HERO_VIDEOS[currentHeroVideoIndex]}
                 className="w-full h-full object-cover opacity-40"
                 style={{ mixBlendMode: 'screen', filter: 'saturate(50%)' }}
-              >
-                <source src="/termian dock vid1.mp4" type="video/mp4" />
-              </video>
+              />
             </div>
 
             <div className="container relative z-10 mx-auto px-6 text-center flex flex-col items-center">
