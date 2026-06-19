@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 
-const TechNotch = () => (
-  <div className="absolute top-0 left-0 w-full h-6 lg:h-8 z-20 pointer-events-none">
+const TechNotch = ({ bottom }) => (
+  <div className={`absolute ${bottom ? 'bottom-0 left-0 rotate-180' : 'top-0 left-0'} w-full h-6 lg:h-8 z-20 pointer-events-none`}>
     <svg viewBox="0 0 1440 32" className="w-full h-full" preserveAspectRatio="none">
       {/* Background fill */}
       <path d="M0 0 H 500 L 524 32 H 916 L 940 0 H 1440 V -10 H 0 Z" fill="#09090b" />
@@ -368,6 +368,40 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Immersive Video Section */}
+          <section className="relative py-64 md:py-80 overflow-hidden bg-zinc-950 mt-12 border-t-0 flex flex-col justify-center">
+            <TechNotch />
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                zIndex: 0,
+                maskImage: 'linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)',
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover opacity-50"
+                style={{ mixBlendMode: 'screen', filter: 'saturate(60%)' }}
+              >
+                <source src="/termian dock vid3.mp4" type="video/mp4" />
+              </video>
+            </div>
+            
+            <div className="container relative z-10 mx-auto px-6 text-center flex flex-col items-center justify-center">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-zinc-100 max-w-3xl leading-tight mb-6 drop-shadow-lg">
+                Experience unparalleled control
+              </h2>
+              <p className="text-lg text-zinc-300 max-w-xl font-light drop-shadow">
+                TerminalDock integrates every aspect of your logistics operations into one beautifully immersive experience.
+              </p>
+            </div>
+            <TechNotch bottom />
           </section>
 
           {/* Showcase / Case Studies Section */}
